@@ -12,16 +12,20 @@ var ties = 0
 while (playAgain) {
 
     //Ask player move
-    var userMove = window.prompt("Choose R (Rock), P (Paper), or S (Scissors)!")
-    
+    var userMove = prompt("Choose R (Rock), P (Paper), or S (Scissors)!");
+    var userMove = userMove.toUpperCase();
+    console.log(userMove)
+
+    /*EDIT: CAN YOU HAVE TWO IF STATEMENTS IN A ROW?
+    if (userMove !== legalMove) {
+        confirm ("Pick R (Rock), P (Paper), or S (Scissors)!");*/
+
     //If player hits cancel [ADD IF PLAYER DOESN'T TYPE R, P, OR S]
     if (!userMove) {
         alert ("Goodbye!");
     }
-    
-    userMove = userMove.toUpperCase()
-    
-    console.log(userMove)
+
+    else {
       
     //Get Comp Move
     var randIndex = Math.floor(Math.random() * legalMove.length)
@@ -38,6 +42,8 @@ while (playAgain) {
 
     //todo: Play again?
     playAgain = confirm("Do you want to play again?")
+}
+
 }
 
 function getResultAndScore(userMove,compMove) {
@@ -75,8 +81,8 @@ function getResultAndScore(userMove,compMove) {
             }
         }
         
-        //User chooses scissors
-        else if (userMove === "S"){
+        //User chooses scissors or at this point any other letter. Since this is not fixed yet.
+        else {
             if (compMove ==="S") {
                 result = "You tie!"
                 ties++
@@ -92,11 +98,6 @@ function getResultAndScore(userMove,compMove) {
                 losses++
             }
         }
-        
-        else {
-            confirm ("Pick R (Rock), P (Paper), or S (Scissors)!")
-        }
+    
     return result
 }     
-
-
